@@ -70,7 +70,7 @@ export const TestResult: React.FC<Props> = ({ userAnswers, setShema }) => {
       lang,
     };
 
-    axios.post('http://localhost:5000/result', userResult)
+    axios.post('https://shema-api.onrender.com/result', userResult)
     .then(() => {
       localStorageService.removeUser();
       setEmail('');
