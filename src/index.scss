@@ -33,3 +33,11 @@ button {
   -ms-user-select: none;
   user-select: none;
 }
+
+input[type="radio"]:active {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
