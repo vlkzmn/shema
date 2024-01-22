@@ -34,7 +34,7 @@ button {
   user-select: none;
 }
 
-input[type="radio"]:active {
+label:active {
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;

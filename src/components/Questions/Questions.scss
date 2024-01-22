@@ -35,6 +35,12 @@
   &__input {
     margin: 0;
     visibility: hidden;
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   &__input:checked + .questions__custom-radio-button {

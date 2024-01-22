@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { DataContext } from '../../DataContext';
+// import { DataContext } from '../../DataContext';
 import { localStorageService } from '../../services/localStorageService';
 import { Questions } from '../Questions/Questions';
 import './Test.scss';
 import { Button } from '../Button/Button';
 
 export const Test = () => {
-  const { isDarkTheme } = useContext(DataContext);
+  // const { isDarkTheme } = useContext(DataContext);
   const [name, setName] = useState('');
   const [user, setUser] = useState('');
   const [testing, setTesting] = useState(false);
