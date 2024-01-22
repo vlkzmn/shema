@@ -24,3 +24,12 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+button {
+  -webkit-tap-highlight-color: transparent; /* Для браузеров на основе WebKit (Chrome, Safari) */
+  //tap-highlight-color: transparent; /* Для браузеров на основе Blink (новые версии Chrome) */
+  -webkit-user-select: none; /* Отключение выделения текста на кнопке */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

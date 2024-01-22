@@ -11,10 +11,14 @@
   border: none;
   background-color: $darkColor;
   cursor: pointer;
-  transition: color $smoothTime, background-color $smoothTime;
+  transition: color $smoothTime, background-color $smoothTime, outline ;
 
   &--dark {
     color: $darkColor;
-    background-color: $lightColor;      
+    background-color: $lightColor;
+  }
+
+  &:active {
+    background-color: $grayColor;
   }
 }
