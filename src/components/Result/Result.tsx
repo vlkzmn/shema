@@ -215,26 +215,28 @@ export const TestResult: React.FC<Props> = ({ userAnswers, setShema }) => {
           </p>
 
           <div className="result__confirm">
-            <div>
-              {loading ? (
-                <Loader/>
-              ) : (
-                <div className="result__form">
-                  <input 
-                    type="email"
-                    className="result__input"
-                    value={email}
-                    placeholder={t('placeholder_email')}
-                    onChange={(event) => setEmail(event.target.value)}
-                  />
+            {!message && (
+              <div>
+                {loading ? (
+                  <Loader/>
+                ) : (
+                  <div className="result__form">
+                    <input 
+                      type="email"
+                      className="result__input"
+                      value={email}
+                      placeholder={t('placeholder_email')}
+                      onChange={(event) => setEmail(event.target.value)}
+                    />
 
-                  <Button
-                    text="button_complete"
-                    handler={handleFinishTest}
-                  />
-                </div>
-              )}
-            </div>        
+                    <Button
+                      text="button_complete"
+                      handler={handleFinishTest}
+                    />
+                  </div>
+                )}
+              </div>
+            )}  
 
             {!!message && (
               <p className="result__message">
