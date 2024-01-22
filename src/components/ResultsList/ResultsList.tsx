@@ -27,8 +27,9 @@ export const Results: React.FC = () => {
       .then((data) => {
         setUsersResults(data);
       })
-      .catch(error => {
-        console.error('Error loading data from server', error);
+      .catch(() => {
+        setIsAuth(false);
+        // console.log(error);
       })
       .finally(() => setLoading(false));
 

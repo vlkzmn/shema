@@ -35,7 +35,9 @@
       height: 20px;
       background-color: $lightColorHeader;
       background-image: url(../../styles/menu-dark.svg);
-      background-size: contain;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
       border: none;
       cursor: pointer;
     }
