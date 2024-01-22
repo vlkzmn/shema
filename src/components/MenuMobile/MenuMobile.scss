@@ -1,0 +1,67 @@
+@import '../../styles/variables';
+
+.menu-mobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+
+  &--dark {
+    background-color: $darkColorHeder;
+    color: $lightColorHeader;
+  }
+
+  &__menu {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__button {
+    width: max-content;
+    height: 30px;
+    font-weight: 700;
+    font-size: 18px;
+    color: $darkColorHeder;
+    border: none;
+    background-color: $lightColorHeader;
+    cursor: pointer;
+    transition: color $smoothTime, background-color $smoothTime;
+
+    @media (max-width: 420px) {
+      font-size: 16px;
+    }
+
+    @media (max-width: 380px) {
+      font-size: 14px;
+    }
+
+    &--dark {
+      background-color: $darkColorHeder;
+      color: $lightColorHeader;
+    }
+
+    &--selected {
+      color: $grayColor;
+      cursor: default;
+    }
+  }
+
+  &__close-icon {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: $lightColorHeader;
+    background-image: url(../../styles/close-dark.svg);
+    background-size: cover;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+
+    &--dark {
+      background-color: $darkColorHeder;
+      background-image: url(../../styles/close-light.svg);
+    }
+  }  
+}

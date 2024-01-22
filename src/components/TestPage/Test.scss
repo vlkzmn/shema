@@ -1,0 +1,38 @@
+@import '../../styles/variables';
+
+.test {
+  flex-grow: 1;
+  padding-bottom: 40px;
+  overflow: hidden;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__message {
+    padding-top: 25vh;
+    margin-bottom: 40px;
+    font-size: 22px;
+    text-align: center;    
+  }
+
+  &__buttons {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__input {
+    width: 250px;
+    height: 36px;
+    padding: 0 20px;
+    font-size: 16px;
+    border: 1px solid $grayColor;
+    border-radius: 20px;
+    outline: none;
+  }
+}

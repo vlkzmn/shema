@@ -1,0 +1,20 @@
+@import '../../styles/variables';
+
+.footer {
+  padding: 10px 0;
+  font-size: 14px;
+  color: $darkColorHeder;
+  text-align: center;
+  border-top: 1px solid $grayColor;
+  background-color: $lightColorHeader;
+  transition: color $smoothTime, background-color $smoothTime;
+
+  &--dark {
+    color: $lightColorHeader;
+    background-color: $darkColorHeder;
+  }
+
+  &__link {
+    line-height: 20px;
+  }
+}

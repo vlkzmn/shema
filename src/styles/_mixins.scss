@@ -1,0 +1,23 @@
+@mixin tableResult {
+  @media (max-width: 799px) {
+    @content;
+  }
+}
+
+@mixin listResult {
+  @media (min-width: 800px) {
+    @content;
+  }
+}
+
+@mixin headerMenu {
+  @media (min-width: 581px) {
+    @content;
+  }
+}
+
+@mixin headerMenuIcon {
+  @media (max-width: 580px) {
+    @content;
+  }
+}

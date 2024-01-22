@@ -1,0 +1,70 @@
+@import '../../styles/variables';
+
+.results {
+  flex-grow: 1;
+  padding: 40px 0;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__loader {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &__message {
+    margin-bottom: 40px;
+    padding-top: 20vh;
+    text-align: center;
+  }
+
+  &__buttons {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__input {
+    width: 150px;
+    height: 40px;
+    padding: 0 20px;
+    font-size: 18px;
+    border: 1px solid $grayColor;
+    border-radius: 20px;
+    outline: none;
+  }
+
+  &__table {
+    margin: 0 auto;    
+    border-collapse: collapse;
+  }
+
+  &__row {
+    cursor: pointer;
+  }
+
+  &__cell-start {
+    text-align: left;
+  }
+
+  &__user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__user-name {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,126 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+  padding: 10px 0;  
+  color: $darkColorHeder;
+  border-bottom: 1px solid $grayColor;
+  background-color: $lightColorHeader;
+  transition: color $smoothTime, background-color $smoothTime;
+
+  &--dark {
+    color: $lightColorHeader;
+    background-color: $darkColorHeder;
+  }
+
+  &__container {
+    max-width: $maxWidth;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-icon {
+    display: none;
+
+    @include headerMenuIcon {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-color: $lightColorHeader;
+      background-image: url(../../styles/menu-dark.svg);
+      background-size: contain;
+      border: none;
+      cursor: pointer;
+    }
+
+    &--dark {
+      @include headerMenuIcon {
+        background-color: $darkColorHeder;
+        background-image: url(../../styles/menu-light.svg);
+      }
+    }
+  }
+
+  &__menu-left {
+    display: none;
+
+    @include headerMenu {
+      display: flex;
+      gap: 20px;
+    }
+  }
+  
+  &__menu-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__menu-item {
+    display: flex;
+  }
+
+  &__lang {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__button {
+    width: max-content;
+    height: 30px;
+    font-weight: 700;
+    font-size: 18px;
+    color: $darkColorHeder;
+    border: none;
+    background-color: $lightColorHeader;
+    cursor: pointer;
+    transition: color $smoothTime, background-color $smoothTime;    
+
+    &--dark {
+      background-color: $darkColorHeder;
+      color: $lightColorHeader;
+    }
+
+    &--selected {
+      color: $grayColor;
+      cursor: default;
+    }
+  }
+
+  &__theme-switcher {
+    width: 50px;
+    height: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 20px;
+    background-color: $darkColorHeder;    
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 50%;
+      padding-bottom: 50%;
+      border-radius: 50%;
+      background-color: $lightColorHeader;
+      transition: transform $smoothTime;
+    }
+
+    &--dark {
+      background-color: $lightColorHeader;
+
+      &::after {
+        background-color: $darkColorHeder;
+        transform: translateX(100%);
+      }
+    }
+  }
+}

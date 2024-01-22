@@ -1,0 +1,16 @@
+@import './Styles/variables';
+
+.app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: $darkColor;
+  background-color: $lightColor;
+  transition: color $smoothTime, background-color $smoothTime;
+
+  &--dark {
+    color: $lightColor;
+    background-color: $darkColor;
+  }
+}
