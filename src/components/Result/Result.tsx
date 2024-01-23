@@ -16,10 +16,9 @@ const QUESTION_INDEX = 'YSQ_S3_schema_';
 type Props = {
   userAnswers: number[];
   setShema: React.Dispatch<React.SetStateAction<number>> | null;
-  scroll: number;
 }
 
-export const TestResult: React.FC<Props> = ({ userAnswers, setShema, scroll }) => {
+export const TestResult: React.FC<Props> = ({ userAnswers, setShema }) => {
   const { isDarkTheme, page, togglePage } = useContext(DataContext);
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -33,10 +32,6 @@ export const TestResult: React.FC<Props> = ({ userAnswers, setShema, scroll }) =
   // for (let i = 0; i < 90; i++) {
   //   users.push(Math.floor(Math.random() * 6) + 1);
   // }
-
-  useEffect(() => {
-    return () => window.scrollTo(0, scroll);
-  }, []);
 
   for (let i = 0; i < 18; i++) {
     const answers: number[] = [];
