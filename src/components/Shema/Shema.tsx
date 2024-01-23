@@ -28,6 +28,8 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult }) => {
     };
 
     fetchData();
+
+    return () => window.scrollTo(0, 0);
   }, []);
 
   const htmlString = () => {
