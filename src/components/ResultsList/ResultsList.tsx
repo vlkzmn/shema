@@ -169,6 +169,7 @@ export const Results: React.FC = () => {
             <TestResult 
               userAnswers={user.userAnswers} 
               setShema={setShema}
+              scroll={window.scrollY}
             />
 
             <Button
