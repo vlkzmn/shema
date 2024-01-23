@@ -15,14 +15,16 @@
     justify-content: center;
   }
 
-  &__title {
-    text-align: center;
+  &__title {    
     margin-bottom: 30px;
+    font-size: 26px;
+    text-align: center;
   }
 
   &__message {
     margin-bottom: 40px;
     padding-top: 20vh;
+    font-size: 22px;
     text-align: center;
   }
 
@@ -65,6 +67,7 @@
 
   &__user-name {
     margin-bottom: 20px;
+    font-size: 26px;
     text-align: center;
   }
 }

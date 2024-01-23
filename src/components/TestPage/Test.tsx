@@ -10,7 +10,7 @@ import { Button } from '../Button/Button';
 export const Test = () => {
   // const { isDarkTheme } = useContext(DataContext);
   const [name, setName] = useState('');
-  const [user, setUser] = useState('default');
+  const [user, setUser] = useState('.');
   const [testing, setTesting] = useState(false);
   const { t } = useTranslation();
 
