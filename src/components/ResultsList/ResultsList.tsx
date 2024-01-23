@@ -181,7 +181,8 @@ export const Results: React.FC = () => {
         {!!shema && (
           <Shema 
             shema={shema} 
-            handleBackToResult={handleBackToResult} 
+            handleBackToResult={handleBackToResult}
+            scroll={window.scrollY}
           />
         )}
       </div>      

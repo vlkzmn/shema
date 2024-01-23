@@ -11,9 +11,10 @@ import './Shema.scss';
 type Props = {
   shema: number;
   handleBackToResult: () => void;
+  scroll: number;
 }
 
-export const Shema: React.FC<Props> = ({ shema, handleBackToResult }) => {
+export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) => {
   const { isDarkTheme } = useContext(DataContext);
   const [data, setData] = useState<ShemaText | null>(null);
 
@@ -29,7 +30,7 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult }) => {
 
     fetchData();
 
-    return () => window.scrollTo(0, 0);
+    return () => window.scrollTo(0, scroll);
   }, []);
 
   const htmlString = () => {
