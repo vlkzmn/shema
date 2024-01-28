@@ -72,7 +72,8 @@ export const Results: React.FC = () => {
 
   const handleOpenUser = (user: UsersResults) => {
     setScroll(window.scrollY);
-    setUser(user);    
+    setUser(user);
+    window.scrollTo(0, 0);
   };
 
   const handleBackToList = () => {
