@@ -79,9 +79,10 @@ export const Results: React.FC = () => {
   };
 
   const handleBackToList = () => {
+    window.scrollTo(0, scroll);
     setUser(null);
     console.log(scroll);    
-    window.scrollTo(0, scroll);
+    
     console.log(window.scrollY);
   };
 
