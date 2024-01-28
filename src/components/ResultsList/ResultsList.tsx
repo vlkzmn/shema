@@ -167,7 +167,8 @@ export const Results: React.FC = () => {
         {user && !shema && (
           <div className="results__user">
             <h1 className="results__user-name">
-              {`Результат для ${user.user}`}
+              {t('result_for') + user.user}
+              {/* {`Результат для ${user.user}`} */}
             </h1>
 
             <TestResult 
