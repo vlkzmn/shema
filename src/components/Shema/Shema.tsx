@@ -7,6 +7,7 @@ import { ShemaText } from '../../types/ShemaText';
 import { Loader } from '../Loader/Loader';
 import { Button } from '../Button/Button';
 import './Shema.scss';
+import { ButtonTypes } from '../../types/ButtonTypes';
 
 type Props = {
   shema: number;
@@ -72,6 +73,7 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
 
           <div className="shema__button">
             <Button
+              type={ButtonTypes.button}
               text="button_back_to_result"
               handler={handleBackToResult}
             />

@@ -1,5 +1,5 @@
 export enum Langs {
   ua = 'ua',
-  // en = 'en',  
+  en = 'en',  
   ru = 'ru',
 };

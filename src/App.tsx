@@ -31,8 +31,6 @@ export const App = () => {
         <Header />
         
         {renderPage()}
-
-        <Footer />
       </div> 
     </Suspense>     
   );

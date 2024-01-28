@@ -5,6 +5,7 @@ import { DataContext } from '../../DataContext';
 import { Pages } from '../../types/Pages';
 import { Button } from '../Button/Button';
 import './Info.scss';
+import { ButtonTypes } from '../../types/ButtonTypes';
 
 
 export const Info = () => {
@@ -33,6 +34,7 @@ export const Info = () => {
         </div>  
 
         <Button
+          type={ButtonTypes.button}
           text="button_to_test"
           handler={() => togglePage(Pages.test)}
         />

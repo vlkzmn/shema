@@ -5,20 +5,21 @@ import axios from 'axios';
 
 import { Pages } from '../../types/Pages';
 import { Result } from '../../types/Result';
+import { ButtonTypes } from '../../types/ButtonTypes';
 import { DataContext } from '../../DataContext';
 import { localStorageService } from '../../services/localStorageService';
-import './Result.scss';
 import { Loader } from '../Loader/Loader';
 import { Button } from '../Button/Button';
+import './Result.scss';
 
 const QUESTION_INDEX = 'YSQ_S3_schema_';
 
 type Props = {
   userAnswers: number[];
-  setShema: React.Dispatch<React.SetStateAction<number>> | null;
+  setShema?: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const TestResult: React.FC<Props> = ({ userAnswers, setShema }) => {
+export const TestResult: React.FC<Props> = ({ userAnswers, setShema = null }) => {
   const { isDarkTheme, page, togglePage } = useContext(DataContext);
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -58,7 +59,9 @@ export const TestResult: React.FC<Props> = ({ userAnswers, setShema }) => {
     };
   }
 
-  const handleFinishTest = () => {
+  const handleFinishTest = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    
     setLoading(true);
     setMessage('');
 
@@ -71,6 +74,7 @@ export const TestResult: React.FC<Props> = ({ userAnswers, setShema }) => {
     };
 
     axios.post('https://shema-api.onrender.com/result', userResult)
+    // axios.post('http://localhost:5000/result', userResult)
     .then(() => {
       localStorageService.removeUser();
       setEmail('');
@@ -220,7 +224,7 @@ export const TestResult: React.FC<Props> = ({ userAnswers, setShema }) => {
                 {loading ? (
                   <Loader/>
                 ) : (
-                  <div className="result__form">
+                  <form className="result__form" onSubmit={handleFinishTest}>
                     <input 
                       type="email"
                       className="result__input"
@@ -230,10 +234,10 @@ export const TestResult: React.FC<Props> = ({ userAnswers, setShema }) => {
                     />
 
                     <Button
-                      text="button_complete"
-                      handler={handleFinishTest}
+                      type={ButtonTypes.submit}
+                      text="button_complete"                      
                     />
-                  </div>
+                  </form>
                 )}
               </div>
             )}  

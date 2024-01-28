@@ -7,6 +7,7 @@ import { localStorageService } from '../../services/localStorageService';
 import { TestResult } from '../Result/Result';
 import { Button } from '../Button/Button';
 import './Questions.scss';
+import { ButtonTypes } from '../../types/ButtonTypes';
 
 const ANSWERS = ['1', '2', '3', '4', '5', '6'];
 const TEST_NAME = 'YSQ_S3';
@@ -18,6 +19,8 @@ export const Questions = () => {
   const [answer, setAnswer] = useState('');
   const [userAnswers, setUserAnswers] = useState<number[]>([]);
   const { t } = useTranslation();
+
+  console.log('123');
 
   useEffect(() => {
     const savedAnswers = localStorageService.getAnswers();
@@ -32,8 +35,6 @@ export const Questions = () => {
     setAnswer(event.target.value);
   };
 
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
   const handleSubmit = () => {    
     if (answer) {
       const answers = [...userAnswers, +answer];
@@ -96,12 +97,14 @@ export const Questions = () => {
 
             <div className="questions__button-box">
               <Button
+                type={ButtonTypes.button}
                 text="button_next"
                 handler={handleSubmit}
               />
 
               {userAnswers.length > 0 && (
                 <Button
+                  type={ButtonTypes.button}
                   text="button_prev"
                   handler={handlePrevQuestion}
                 />
@@ -116,8 +119,7 @@ export const Questions = () => {
           </h1>
 
           <TestResult 
-            userAnswers={userAnswers} 
-            setShema={null}
+            userAnswers={userAnswers}
           />
         </>        
       )}     

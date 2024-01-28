@@ -11,6 +11,7 @@ import { TestResult } from '../Result/Result';
 import { Shema } from '../Shema/Shema';
 import { Loader } from '../Loader/Loader';
 import { Button } from '../Button/Button';
+import { ButtonTypes } from '../../types/ButtonTypes';
 
 export const Results: React.FC = () => {
   const { isDarkTheme } = useContext(DataContext);
@@ -21,6 +22,7 @@ export const Results: React.FC = () => {
   const [shema, setShema] = useState(0);
   const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
+  const [scroll, setScroll] = useState(0);
 
   function fetchData() {
     resultsService.getAll()
@@ -69,11 +71,13 @@ export const Results: React.FC = () => {
   };
 
   const handleOpenUser = (user: UsersResults) => {
-    setUser(user);
+    setScroll(window.scrollY);
+    setUser(user);    
   };
 
   const handleBackToList = () => {
     setUser(null);
+    window.scrollTo(0, scroll);
   };
 
   const handleBackToResult = () => {
@@ -107,15 +111,10 @@ export const Results: React.FC = () => {
                 autoComplete='true'
               />
 
-              <button 
-                type="submit"
-                className={cn(
-                  'button', 
-                  { 'button--dark': isDarkTheme },
-                )}
-              >
-                {t('button_submit')}
-              </button>
+              <Button
+                type={ButtonTypes.submit}
+                text="button_submit"
+              />
             </form>
           </>        
         )} 
@@ -172,6 +171,7 @@ export const Results: React.FC = () => {
             />
 
             <Button
+              type={ButtonTypes.button}
               text="button_back_to_list_results"
               handler={handleBackToList}
             />

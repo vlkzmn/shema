@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { DataProvider } from './DataContext';
 import { App } from './App';
 import './index.scss';
-import './i18n.js';
+import './i18n.ts';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

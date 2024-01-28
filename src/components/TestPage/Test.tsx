@@ -1,42 +1,41 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-// import { DataContext } from '../../DataContext';
 import { localStorageService } from '../../services/localStorageService';
+import { ButtonTypes } from '../../types/ButtonTypes';
 import { Questions } from '../Questions/Questions';
-import './Test.scss';
 import { Button } from '../Button/Button';
+import './Test.scss';
 
 export const Test = () => {
-  // const { isDarkTheme } = useContext(DataContext);
   const [name, setName] = useState('');
-  const [user, setUser] = useState('.');
+  const [user, setUser] = useState<string | null>(localStorageService.getName());
   const [testing, setTesting] = useState(false);
   const { t } = useTranslation();
 
-  useEffect(() => {
-    const savedUser = localStorageService.getName();
-
-    if (savedUser) {
-      setUser(savedUser);
-    } else {
-      setUser('');
-    }
+  const handleNewTest = useCallback(() => {
+    localStorageService.removeUser();
+    setUser('');
   }, []);
 
-  const handleSubmit = () => {
+  const handleContinueTest = useCallback(() => {
+    setTesting(true);
+  }, []);
+
+  const handleNameSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  
     if (name.trim()) {
       setUser(name);
       localStorageService.setName(name);
       setTesting(true);
     }     
-    
+  
     setName('');
   };
 
-  const handleNewTest = () => {
-    localStorageService.removeUser();
-    setUser('');  
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
   };
 
   return (
@@ -50,11 +49,13 @@ export const Test = () => {
 
             <div className="test__buttons">
               <Button
+                type={ButtonTypes.button}
                 text="button_continue_test"
-                handler={() => setTesting(true)}
+                handler={handleContinueTest}
               />
 
               <Button
+                type={ButtonTypes.button}
                 text="button_start_new_test"
                 handler={handleNewTest}
               />
@@ -68,21 +69,21 @@ export const Test = () => {
               {t('input_name')}
             </p>
 
-            <div className="test__buttons">
+            <form className="test__buttons" onSubmit={handleNameSubmit}>
               <input 
                 type="text"
                 className="test__input"
                 value={name}
                 placeholder={t('placeholder_name')}
-                onChange={(event) => setName(event.target.value)}
+                onChange={handleNameChange}
                 autoFocus
               />
 
               <Button
+                type={ButtonTypes.submit}
                 text="button_submit"
-                handler={handleSubmit}
               />
-            </div>
+            </form>
           </div>
         )}       
 
