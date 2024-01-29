@@ -9,7 +9,6 @@ import { Info } from './components/Info/Info';
 import { Test } from './components/TestPage/Test';
 import { Results } from './components/ResultsList/ResultsList';
 import { Loader } from './components/Loader/Loader';
-import { Footer } from './components/Footer/Footer';
 
 export const App = () => {
   const { isDarkTheme, page} = useContext(DataContext);

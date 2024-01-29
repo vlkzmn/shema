@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { UsersResults } from '../../types/UsersResults';
@@ -25,7 +25,7 @@ export const Results: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [scroll, setScroll] = useState(0);
 
-  function fetchData() {
+  const fetchData = useCallback(() => {
     resultsService.getAll()
       .then((data) => {
         setUsersResults(data);
@@ -34,6 +34,17 @@ export const Results: React.FC = () => {
         setIsAuth(false);
       })
       .finally(() => setLoading(false));
+  }, []);
+
+  // function fetchData() {
+  //   resultsService.getAll()
+  //     .then((data) => {
+  //       setUsersResults(data);
+  //     })
+  //     .catch(() => {
+  //       setIsAuth(false);
+  //     })
+  //     .finally(() => setLoading(false));
 
     // setTimeout(() => {
     //   resultsService.getAll()
@@ -45,7 +56,7 @@ export const Results: React.FC = () => {
     //     })
     //     .finally(() => setLoading(false));
     // }, 1000);    
-  }
+  // }
   
   useEffect(() => {
     const accessToken = localStorageService.getAccessToken();
