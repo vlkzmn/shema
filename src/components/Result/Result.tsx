@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 
 import { Pages } from '../../types/Pages';
 import { ButtonTypes } from '../../types/ButtonTypes';
