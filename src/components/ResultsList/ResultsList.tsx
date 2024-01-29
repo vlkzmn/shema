@@ -106,13 +106,13 @@ export const Results: React.FC = () => {
   return (
     <div className="results">
       <div className="results__container">
-        {/* {loading && (
+        {loading && (
           <div className="results__loader">
             <Loader/>
           </div>
-        )} */}
+        )}
 
-        {!isAuth && !user && (
+        {!isAuth && !user && !loading && (
           <>
             <p className="results__message">
               {t('input_password')}
@@ -135,12 +135,6 @@ export const Results: React.FC = () => {
             </form>
           </>        
         )} 
-
-        {loading && (
-          <div className="results__loader">
-            <Loader/>
-          </div>
-        )}
 
         {isAuth && !user && !loading && (
           <>
