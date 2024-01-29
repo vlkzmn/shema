@@ -64,17 +64,19 @@ export const Results: React.FC = () => {
     if (accessToken) {
       fetchData();
     } else {
+      setLoading(false);
       setIsAuth(false);
     }
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
 
     authService.login(password)
       .then((data) => {
         localStorageService.setAccessToken(data);  
-        fetchData(); 
+        fetchData();
         setIsAuth(true);
       })
       .catch(error => console.log(error));
@@ -104,7 +106,7 @@ export const Results: React.FC = () => {
   return (
     <div className="results">
       <div className="results__container">
-        {loading && isAuth && (
+        {loading && (
           <div className="results__loader">
             <Loader/>
           </div>
