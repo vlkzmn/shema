@@ -59,4 +59,28 @@ th, td {
     margin-bottom: 0;
     font-size: 20px;
   }
+
+  &__link {
+    // width: max-content;
+    min-height: 30px;
+    padding-left: 0;
+    font-size: 20px;
+    // font-size: calc(5px + 2vmin);
+    text-align: left;
+    color: $darkColor;
+    border: none;
+    background-color: $lightColor;
+    cursor: pointer;
+    transition: color $smoothTime, background-color $smoothTime;
+
+    &--dark {
+      background-color: $darkColor;
+      color: $lightColor;
+    }
+
+    &--danger {
+      color: $blackColor;
+      background-color: $redColor; 
+    }
+  }
 }

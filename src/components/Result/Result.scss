@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 
-.result {
+.result {  
   &__title {
     padding: 30px 0;
     text-align: center;
@@ -33,27 +33,5 @@
     justify-content: center;
     height: 100px;
     padding-bottom: 20px;
-  }
-
-  &__link {
-    min-height: 30px;
-    padding-left: 0;
-    font-size: 20px;
-    text-align: left;
-    color: $darkColor;
-    border: none;
-    background-color: $lightColor;
-    cursor: pointer;
-    transition: color $smoothTime, background-color $smoothTime;
-
-    &--dark {
-      background-color: $darkColor;
-      color: $lightColor;
-    }
-
-    &--danger {
-      color: $blackColor;
-      background-color: $redColor; 
-    }
   }
 }
