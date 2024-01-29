@@ -75,10 +75,11 @@ export const Results: React.FC = () => {
       .then((data) => {
         localStorageService.setAccessToken(data);  
         fetchData(); 
+        setIsAuth(true);
       })
       .catch(error => console.log(error));
 
-    setIsAuth(true);
+    // setIsAuth(true);
   };
 
   const handleOpenUser = (user: UsersResults) => {

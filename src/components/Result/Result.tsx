@@ -27,9 +27,9 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
     event.preventDefault();
     
     setLoading(true);
-    setMessage('');
+    // setMessage('');
 
-    const user = localStorageService.getName() || 'name error';
+    const user = localStorageService.getName() || 'Name Error';
     const lang = i18n.language.slice(0, 2);
     
     const userResult = {
