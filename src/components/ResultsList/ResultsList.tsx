@@ -24,6 +24,7 @@ export const Results: React.FC = () => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
   const [scroll, setScroll] = useState(0);
+  const [passwordInputTitle, setPasswordInputTitle] = useState('input_password');
 
   const fetchData = useCallback(() => {
     resultsService.getAll()
@@ -79,7 +80,11 @@ export const Results: React.FC = () => {
         fetchData();
         setIsAuth(true);
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+        setLoading(false);
+        setPasswordInputTitle('wrong_password');
+      });
 
     // setIsAuth(true);
   };
@@ -115,7 +120,7 @@ export const Results: React.FC = () => {
         {!isAuth && !user && !loading && (
           <>
             <p className="results__message">
-              {t('input_password')}
+              {t(passwordInputTitle)}
             </p>
 
             <form className="results__buttons" onSubmit={handleSubmit}>

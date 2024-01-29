@@ -24,6 +24,7 @@
   "test_error": "Save error, please try again later",
 
   "input_password": "Enter password:",
+  "wrong_password": "You entered the wrong password, try again:",
   "title_results_list": "List of results",
   "name": "Client's name",
   "date": "Date of completion",
