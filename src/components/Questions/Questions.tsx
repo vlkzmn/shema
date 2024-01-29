@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
+import { ButtonTypes } from '../../types/ButtonTypes';
 import { DataContext } from '../../DataContext';
 import { localStorageService } from '../../services/localStorageService';
 import { TestResult } from '../Result/Result';
 import { Button } from '../Button/Button';
 import './Questions.scss';
-import { ButtonTypes } from '../../types/ButtonTypes';
+
 
 const ANSWERS = ['1', '2', '3', '4', '5', '6'];
 const TEST_NAME = 'YSQ_S3';
@@ -113,15 +114,7 @@ export const Questions = () => {
           </div>
         </>
       ) : (
-        <>
-          <h1 className="questions__result-title">
-            {t('test_result')}
-          </h1>
-
-          <TestResult 
-            userAnswers={userAnswers}
-          />
-        </>        
+        <TestResult userAnswers={userAnswers} />     
       )}     
     </div>
   );

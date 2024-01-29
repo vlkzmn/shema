@@ -1,16 +1,17 @@
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { DataContext } from '../../DataContext';
 import { Pages } from '../../types/Pages';
+import { ButtonTypes } from '../../types/ButtonTypes';
 import { Button } from '../Button/Button';
 import './Info.scss';
-import { ButtonTypes } from '../../types/ButtonTypes';
-
 
 export const Info = () => {
   const { togglePage } = useContext(DataContext);
   const { t } = useTranslation();
+
+  const handleTogglePage = useCallback(() => togglePage(Pages.test), []);
 
   return (
     <div className="info">
@@ -36,7 +37,7 @@ export const Info = () => {
         <Button
           type={ButtonTypes.button}
           text="button_to_test"
-          handler={() => togglePage(Pages.test)}
+          handler={handleTogglePage}
         />
       </div>      
     </div>

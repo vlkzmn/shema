@@ -1,20 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react';
-import './ResultsList.scss';
-import { DataContext } from '../../DataContext';
-import { localStorageService } from '../../services/localStorageService';
-import cn from 'classnames';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { UsersResults } from '../../types/UsersResults';
+import { ButtonTypes } from '../../types/ButtonTypes';
+
 import { resultsService } from '../../services/resultsService';
 import { authService } from '../../services/authService';
-import { UsersResults } from '../../types/UsersResults';
-import { TestResult } from '../Result/Result';
+import { localStorageService } from '../../services/localStorageService';
+
+import { ResultData } from '../ResultData/ResultData';
 import { Shema } from '../Shema/Shema';
 import { Loader } from '../Loader/Loader';
 import { Button } from '../Button/Button';
-import { ButtonTypes } from '../../types/ButtonTypes';
+
+import './ResultsList.scss';
 
 export const Results: React.FC = () => {
-  const { isDarkTheme } = useContext(DataContext);
   const [isAuth, setIsAuth] = useState(true);
   const [password, setPassword] = useState('');
   const [usersResults, setUsersResults] = useState<UsersResults[]>([]);
@@ -31,7 +32,6 @@ export const Results: React.FC = () => {
       })
       .catch(() => {
         setIsAuth(false);
-        // console.log(error);
       })
       .finally(() => setLoading(false));
 
@@ -88,8 +88,6 @@ export const Results: React.FC = () => {
   const handleBackToResult = () => {
     setShema(0);
   };
-
-  const title = `Результат для ${user?.user}`;
 
   return (
     <div className="results">
@@ -168,10 +166,9 @@ export const Results: React.FC = () => {
           <div className="results__user">
             <h1 className="results__user-name">
               {t('result_for') + user.user}
-              {/* {`Результат для ${user.user}`} */}
             </h1>
 
-            <TestResult 
+            <ResultData 
               userAnswers={user.userAnswers} 
               setShema={setShema}
             />

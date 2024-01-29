@@ -31,6 +31,8 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
 
     fetchData();
 
+    
+
     return () => window.scrollTo(0, scroll);
   }, []);
 

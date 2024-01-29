@@ -19,7 +19,7 @@
   "percent": "Percentage",
   "sum5and6": "5 and 6",
   "result_page_text_1": "You can get a detailed overview of the results from the specialist who referred you for testing, you should not interpret the results yourself.",
-  "result_page_text_2": "If you need to send the result by email, enter your address, if not, then leave the input field empty. To complete the test and save the results, click 'Finish' and wait for the success message. Afterwards, you will be redirected to the test home page.",
+  "result_page_text_2": "If you need to send the result by email, enter your address, if not, then leave the input field empty. To complete the test and save the results, click 'Finish' and wait for the success message (it may take 1-2 minutes, the application is still on free hosting, that's why there is such a delay). Afterwards, you will be redirected to the test home page.",
   "test_success": "Result successfully saved",
   "test_error": "Save error, please try again later",
 

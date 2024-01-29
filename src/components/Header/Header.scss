@@ -54,8 +54,7 @@
     display: none;
 
     @include headerMenu {
-      display: flex;
-      gap: 20px;
+      display: block;
     }
   }
   
@@ -65,9 +64,9 @@
     gap: 20px;
   }
 
-  &__menu-item {
-    display: flex;
-  }
+  // &__menu-item {
+  //   display: flex;
+  // }
 
   &__lang {
     display: flex;

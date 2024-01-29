@@ -1,0 +1,62 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+th, td {
+  min-width: 55px;
+  padding: 5px 10px;
+  text-align: center;
+  border: 1px solid $grayColor;
+}
+
+.result-data {
+  &__content {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__table {
+    display: block;    
+    margin-bottom: 30px;
+    border-collapse: collapse;
+    
+    @include tableResult {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 40px;
+
+    @include listResult {
+      display: none;
+    }
+  }
+
+  &__list-item {
+    padding: 10px;
+    border: 1px solid $grayColor;
+    border-radius: 10px;
+
+    &--danger {
+      color: $blackColor;
+      background-color: $redColor; 
+    }
+  }
+
+  &__list-value {
+    display: inline-block;
+    width: 150px;
+  }
+  
+  &__cell-start {
+    text-align: left;
+  }
+  
+  &__shema {
+    margin-bottom: 0;
+    font-size: 20px;
+  }
+}

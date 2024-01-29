@@ -11,13 +11,13 @@
 }
 
 @mixin headerMenu {
-  @media (min-width: 581px) {
+  @media (min-width: 590px) {
     @content;
   }
 }
 
 @mixin headerMenuIcon {
-  @media (max-width: 580px) {
+  @media (max-width: 590px) {
     @content;
   }
 }

@@ -4,10 +4,10 @@ import i18next from "i18next";
 import { useTranslation } from 'react-i18next';
 
 import { DataContext } from '../../DataContext';
-import { Pages } from '../../types/Pages';
 import { Langs } from '../../types/Langs';
 import { localStorageService } from '../../services/localStorageService';
 import { MenuMobile } from '../MenuMobile/MenuMobile';
+import { PagesList } from '../PagesList/PagesList';
 import './Header.scss';
 
 export const Header = () => {
@@ -16,7 +16,6 @@ export const Header = () => {
   const { t, i18n } = useTranslation();
   
   const currentLang = i18n.language.slice(0, 2);
-  const menu = Object.values(Pages);
   const langs = Object.values(Langs);
 
   const handleChangeLang = (lang: string) => {
@@ -55,24 +54,10 @@ export const Header = () => {
               onClick={toggleMenu}
             >            
             </button>
-          
-            <ul className="header__menu-left">
-              {menu.map(item => (
-                <li key={item} className="header__menu-item">
-                  <button 
-                    type="button" 
-                    className={cn(
-                      'header__button', 
-                      { 'header__button--dark': isDarkTheme },
-                      { 'header__button--selected': page === item },
-                    )}
-                    onClick={() => togglePage(Pages[item])}
-                  >
-                    {t(item)}
-                  </button>
-                </li>
-              ))}
-            </ul>
+
+            <div className="header__menu-left">
+              <PagesList />
+            </div>            
 
             <div className="header__menu-right">
               <ul className="header__lang">

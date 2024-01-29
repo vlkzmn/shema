@@ -12,7 +12,7 @@ type Props = {
   handler?: () => void;
 };
 
-export const Button: React.FC<Props> = memo(({ type, text, handler = () => {}}) => {
+export const Button: React.FC<Props> = memo(({ type, text, handler = () => {} }) => {
   const { isDarkTheme } = useContext(DataContext);
   const { t } = useTranslation();
 
