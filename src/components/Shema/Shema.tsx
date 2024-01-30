@@ -46,27 +46,33 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
   }, []);
 
   const htmlString = () => {
-    let title = `<h1 class="shema__title">${data?.title}</h1>`;
+    console.log(data);
+    
+    if (data) {
+      let title = `<h1 class="shema__title">${data.title}</h1>`;
 
-    const result = data?.text.reduce((sum, item) => {
-      let paragraph = '';
+      const result = data.text.reduce((sum, item) => {
+        let paragraph = '';
 
-      if (item.type === 'list') {
-        paragraph = '<ul class="shema__list">';
+        if (item.type === 'list') {
+          paragraph = '<ul class="shema__list">';
 
-        item.content.forEach(element => {
-          paragraph += `<li class="shema__list-item">${element}</li>`;
-        });
-        
-        paragraph += '</ul>';
-      } else {
-        paragraph = `<p  class="shema__paragraph">${item.content[0]}</p>`;
-      }
+          item.content.forEach(element => {
+            paragraph += `<li class="shema__list-item">${element}</li>`;
+          });
+          
+          paragraph += '</ul>';
+        } else {
+          paragraph = `<p class="shema__paragraph">${item.content[0]}</p>`;
+        }
 
-      return sum + paragraph;
-    }, title);
+        return sum + paragraph;
+      }, title);
 
-    return result || title;
+      return result;
+    }
+
+    return '<h1 class="shema__title">Data error</h1>';
   };
 
   return (
