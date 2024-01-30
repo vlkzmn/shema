@@ -79,6 +79,7 @@ export const Results: React.FC = () => {
         localStorageService.setAccessToken(data);  
         fetchData();
         setIsAuth(true);
+        setPasswordInputTitle('input_password');
       })
       .catch(error => {
         console.log(error);
