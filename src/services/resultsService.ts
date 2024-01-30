@@ -13,7 +13,7 @@ function getShema(shema: number): Promise<ShemaText> {
 }
 
 function sendResult(data: TestResult): Promise<number> {
-  return axios.post("/result", data);
+  return axios.post("https://shema-api.onrender.com/result", data);
 }
 
 export const resultsService = { getAll, getShema, sendResult };
