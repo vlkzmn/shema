@@ -8,12 +8,8 @@ function getAll(): Promise<UsersResults[]> {
 }
 
 function getShema(shema: number): Promise<AxiosResponse> {
-  return axios.get(`./api/shema_${shema}.json`);
+  return axios.get(`./api1/shema_${shema}.json`);
 }
-
-// async function getShema(shema: number): Promise<AxiosResponse> {
-//   return await axios.get(`./api/shema_${shema}.json`);
-// }
 
 function sendResult(data: TestResult): Promise<AxiosResponse> {
   return httpClient.post("/result", data);

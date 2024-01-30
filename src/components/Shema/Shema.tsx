@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
 
 import { DataContext } from '../../DataContext';
@@ -8,7 +7,6 @@ import { Loader } from '../Loader/Loader';
 import { Button } from '../Button/Button';
 import './Shema.scss';
 import { ButtonTypes } from '../../types/ButtonTypes';
-import { useTranslation } from 'react-i18next';
 import { resultsService } from '../../services/resultsService';
 
 type Props = {
@@ -20,8 +18,6 @@ type Props = {
 export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) => {
   const { isDarkTheme } = useContext(DataContext);
   const [data, setData] = useState<ShemaText | null>(null);
-  const [errorMessage, setErrorMessage] = useState('');
-  const { t } = useTranslation();
 
   useEffect(() => {
     // const fetchData = async () => {
@@ -38,16 +34,14 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
     resultsService.getShema(shema)
       .then((res) => setData(res.data))
       .catch((error) => {
-        console.error('Error reading JSON file:', error);
-        setErrorMessage('shema_error_loading');
+        console.error('Error reading JSON file:', error);;
       })
 
     return () => window.scrollTo(0, scroll);
   }, []);
 
   const htmlString = () => {
-
-    if (data && data.text) {
+    if (data) {
       let title = `<h1 class="shema__title">${data.title}</h1>`;
 
       const result = data.text.reduce((sum, item) => {
@@ -71,7 +65,7 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
       return result;
     }
 
-    return '<h1 class="shema__title">Data error</h1>';
+    return '<h1 class="shema__title">Ошибка загрузки схемы</h1>';
   };
 
   return (
@@ -95,13 +89,7 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
             />
           </div>
         </>      
-      )}
-
-      {errorMessage && (
-        <h1 className="shema__title">
-          {t(errorMessage)}
-        </h1>
-      )}     
+      )}    
     </div>
   );
 };
