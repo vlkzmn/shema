@@ -98,6 +98,16 @@ export const Results: React.FC = () => {
     }, 0);
   };
 
+  const getDate = (data: string) => {
+    const date = new Date(data);
+
+    return date.toLocaleDateString("ua-UA", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    });
+  }
+
   const handleBackToList = () => {
     setUser(null);
     setTimeout(() => {
@@ -156,26 +166,27 @@ export const Results: React.FC = () => {
                   <th>{t('date')}</th>
                 </tr>
               </thead>
+
               <tbody>
                 {usersResults.map((item, i) => {
-                  const date = new Date(item.createdAt);
-
-                  const formattedDate = date.toLocaleDateString("ua-UA", {
-                    year: "numeric",
-                    month: "numeric",
-                    day: "numeric",
-                  });
+                  const date = getDate(item.createdAt);
 
                   return (
-                  <tr 
-                    key={item.id}
-                    className="results__row"
-                    onClick={() => handleOpenUser(item)}
-                  >
-                    <td>{i + 1}</td>
-                    <td className="results__cell-start">{item.user}</td>
-                    <td>{formattedDate}</td>
-                  </tr>    
+                    <tr 
+                      key={item.id}
+                      className="results__row"
+                      onClick={() => handleOpenUser(item)}
+                    >
+                      <td>{i + 1}</td>
+
+                      <td className="results__cell-start">
+                        {item.user}
+                      </td>
+
+                      <td>
+                        {date}
+                      </td>
+                    </tr>    
                 )})}
               </tbody>        
             </table> 
