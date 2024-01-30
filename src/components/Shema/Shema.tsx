@@ -36,7 +36,7 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
 
     // fetchData();    
     resultsService.getShema(shema)
-      .then((data) => setData(data))
+      .then((res) => setData(data))
       .catch((error) => {
         console.error('Error reading JSON file:', error);
         setErrorMessage('shema_error_loading');
@@ -47,8 +47,8 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
 
   const htmlString = () => {
     console.log(data);
-    
-    if (data) {
+
+    if (data && data.text) {
       let title = `<h1 class="shema__title">${data.title}</h1>`;
 
       const result = data.text.reduce((sum, item) => {

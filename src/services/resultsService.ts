@@ -1,7 +1,7 @@
 import axios from "axios";
 import { httpClient } from "../http/httpClient";
 import { TestResult } from "../types/TestResult";
-import { UsersResults } from '../types/UsersResults';
+import { UsersResults } from '../types/UsersResults'
 import { ShemaText } from "../types/ShemaText";
 
 function getAll(): Promise<UsersResults[]> {
@@ -13,7 +13,7 @@ async function getShema(shema: number): Promise<ShemaText> {
 }
 
 function sendResult(data: TestResult): Promise<number> {
-  return axios.post("https://shema-api.onrender.com/result", data);
+  return httpClient.post("/result", data);
 }
 
 export const resultsService = { getAll, getShema, sendResult };
