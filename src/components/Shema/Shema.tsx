@@ -19,18 +19,7 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
   const { isDarkTheme } = useContext(DataContext);
   const [data, setData] = useState<ShemaText | null>(null);
 
-  useEffect(() => {
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await axios.get(`./api/shema_${shema}.json`);
-    //     setData(response.data);
-    //   } catch (error) {
-    //     console.error('Error reading JSON file:', error);
-    //     setErrorMessage('shema_error_loading');
-    //   }
-    // };
-
-    // fetchData();    
+  useEffect(() => {   
     resultsService.getShema(shema)
       .then((res) => setData(res.data))
       .catch((error) => {
@@ -67,8 +56,10 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
         return sum + paragraph;
       }, title);
 
-      return result || title;
+      return result;
     }
+
+    return '<h1 class="shema__title">Ошибка загрузки схемы</h1>';
   };
 
   return (
