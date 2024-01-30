@@ -34,7 +34,12 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
     resultsService.getShema(shema)
       .then((res) => setData(res.data))
       .catch((error) => {
-        console.error('Error reading JSON file:', error);;
+        console.error('Error reading JSON file:', error);
+        const errorMessage = {
+          title: 'Ошибка загрузки схемы',
+          text: [],
+        };
+        setData(errorMessage);
       })
 
     return () => window.scrollTo(0, scroll);
@@ -62,10 +67,8 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
         return sum + paragraph;
       }, title);
 
-      return result;
+      return result || title;
     }
-
-    return '<h1 class="shema__title">Ошибка загрузки схемы</h1>';
   };
 
   return (
