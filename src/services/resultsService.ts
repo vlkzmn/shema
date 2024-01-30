@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { httpClient } from "../http/httpClient";
 import { TestResult } from "../types/TestResult";
 import { UsersResults } from '../types/UsersResults'
@@ -8,7 +8,7 @@ function getAll(): Promise<UsersResults[]> {
   return httpClient.get("/result");
 }
 
-async function getShema(shema: number): Promise<ShemaText> {
+async function getShema(shema: number): Promise<AxiosResponse> {
   return await axios.get(`./api/shema_${shema}.json`);
 }
 

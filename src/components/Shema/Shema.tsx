@@ -36,7 +36,7 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
 
     // fetchData();    
     resultsService.getShema(shema)
-      .then((res) => setData(data))
+      .then((res) => setData(res.data))
       .catch((error) => {
         console.error('Error reading JSON file:', error);
         setErrorMessage('shema_error_loading');
