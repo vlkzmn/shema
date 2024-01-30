@@ -8,8 +8,8 @@ function getAll(): Promise<UsersResults[]> {
   return httpClient.get("/result");
 }
 
-function getShema(shema: number): Promise<ShemaText> {
-  return axios.get(`./api/shema_${shema}.json`);
+async function getShema(shema: number): Promise<ShemaText> {
+  return await axios.get(`./api/shema_${shema}.json`);
 }
 
 function sendResult(data: TestResult): Promise<number> {
