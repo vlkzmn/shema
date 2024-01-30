@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { UsersResults } from '../../types/UsersResults';
 import { ButtonTypes } from '../../types/ButtonTypes';
 
-import { resultsService } from '../../services/resultsService';
+import { apiService } from '../../services/apiService';
 import { authService } from '../../services/authService';
 import { localStorageService } from '../../services/localStorageService';
 
@@ -27,7 +27,7 @@ export const Results: React.FC = () => {
   const [passwordInputTitle, setPasswordInputTitle] = useState('input_password');
 
   const fetchData = useCallback(() => {
-    resultsService.getAll()
+    apiService.getAll()
       .then((data) => {
         setUsersResults(data);
       })

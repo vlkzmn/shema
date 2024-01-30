@@ -5,11 +5,11 @@ import { Pages } from '../../types/Pages';
 import { ButtonTypes } from '../../types/ButtonTypes';
 import { DataContext } from '../../DataContext';
 import { localStorageService } from '../../services/localStorageService';
+import { apiService } from '../../services/apiService';
 import { Loader } from '../Loader/Loader';
 import { ResultData } from '../ResultData/ResultData';
 import { Button } from '../Button/Button';
 import './Result.scss';
-import { resultsService } from '../../services/resultsService';
 
 type Props = {
   userAnswers: number[];
@@ -38,26 +38,26 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
       lang,
     };
 
-    resultsService.sendResult(userResult)
+    apiService.sendResult(userResult)
     // axios.post('https://shema-api.onrender.com/result', userResult)
     // axios.post('http://localhost:5000/result', userResult)
-    .then(() => {
-      localStorageService.removeUser();
-      setEmail('');
-      setMessage(t('test_success'));
-      setTimeout(() => {
-        setMessage('');
-        togglePage(Pages.info);
-      }, 5000);
-    })
-    .catch((error) => {
-      console.error(error);
-      setMessage(t('test_error'));
-      setTimeout(() => {
-        setMessage('');
-      }, 5000);
-    })
-    .finally(() => setLoading(false));    
+      .then(() => {
+        localStorageService.removeUser();
+        setEmail('');
+        setMessage(t('test_success'));
+        setTimeout(() => {
+          setMessage('');
+          togglePage(Pages.info);
+        }, 5000);
+      })
+      .catch((error) => {
+        console.error(error);
+        setMessage(t('test_error'));
+        setTimeout(() => {
+          setMessage('');
+        }, 5000);
+      })
+      .finally(() => setLoading(false));    
   };
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {

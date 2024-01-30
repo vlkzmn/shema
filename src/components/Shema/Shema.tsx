@@ -3,11 +3,11 @@ import cn from 'classnames';
 
 import { DataContext } from '../../DataContext';
 import { ShemaText } from '../../types/ShemaText';
+import { ButtonTypes } from '../../types/ButtonTypes';
+import { apiService } from '../../services/apiService';
 import { Loader } from '../Loader/Loader';
 import { Button } from '../Button/Button';
 import './Shema.scss';
-import { ButtonTypes } from '../../types/ButtonTypes';
-import { resultsService } from '../../services/resultsService';
 
 type Props = {
   shema: number;
@@ -20,10 +20,9 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
   const [data, setData] = useState<ShemaText | null>(null);
 
   useEffect(() => {   
-    resultsService.getShema(shema)
+    apiService.getShema(shema)
       .then((res) => setData(res.data))
-      .catch((error) => {
-        console.error('Error reading JSON file:', error);
+      .catch(() => {
         const errorMessage = {
           title: 'Ошибка загрузки схемы',
           text: [],
@@ -36,9 +35,9 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
 
   const htmlString = () => {
     if (data) {
-      let title = `<h1 class="shema__title">${data.title}</h1>`;
+      const title = `<h1 class="shema__title">${data?.title}</h1>`;
 
-      const result = data.text.reduce((sum, item) => {
+      const result = data?.text.reduce((text, item) => {
         let paragraph = '';
 
         if (item.type === 'list') {
@@ -53,13 +52,17 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
           paragraph = `<p class="shema__paragraph">${item.content[0]}</p>`;
         }
 
-        return sum + paragraph;
+        return text + paragraph;
       }, title);
 
       return result;
     }
 
     return '<h1 class="shema__title">Ошибка загрузки схемы</h1>';
+  };
+
+  const htmlData = {
+    __html: htmlString(),
   };
 
   return (
@@ -73,7 +76,7 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
         </div>      
       ) : (
         <>
-          <div dangerouslySetInnerHTML={{ __html: htmlString() }} />
+          <div dangerouslySetInnerHTML={htmlData} />
 
           <div className="shema__button">
             <Button

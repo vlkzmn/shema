@@ -15,4 +15,4 @@ function sendResult(data: TestResult): Promise<AxiosResponse> {
   return httpClient.post("/result", data);
 }
 
-export const resultsService = { getAll, getShema, sendResult };
+export const apiService = { getAll, getShema, sendResult };
