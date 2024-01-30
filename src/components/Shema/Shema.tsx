@@ -46,7 +46,6 @@ export const Shema: React.FC<Props> = ({ shema, handleBackToResult, scroll }) =>
   }, []);
 
   const htmlString = () => {
-    console.log(data);
 
     if (data && data.text) {
       let title = `<h1 class="shema__title">${data.title}</h1>`;

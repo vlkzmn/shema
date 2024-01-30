@@ -21,8 +21,6 @@ export const Questions = () => {
   const [userAnswers, setUserAnswers] = useState<number[]>([]);
   const { t } = useTranslation();
 
-  console.log('123');
-
   useEffect(() => {
     const savedAnswers = localStorageService.getAnswers();
 
