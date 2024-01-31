@@ -47,7 +47,7 @@ export const ResultsList: React.FC<Props> = ({ usersResults, handleOpenUser }) =
                 onClick={() => handleOpenUser(item)}
               >
                 <td>{i + 1}</td>
-                <td className="results-list__cell-start">{item.userName}</td>
+                <td className="results-list__cell-start">{item.user}</td>
                 <td>{date}</td>
               </tr>    
           )})}

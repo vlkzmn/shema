@@ -20,7 +20,7 @@ export const ResultsPage: React.FC = () => {
   const [isAuth, setIsAuth] = useState(true);
   const [password, setPassword] = useState('');
   const [usersResults, setUsersResults] = useState<UserResult[]>([]);
-  const [user, setUser] = useState<UserResult | null>(null);
+  const [result, setResult] = useState<UserResult | null>(null);
   const [shema, setShema] = useState(0);
   const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
@@ -73,14 +73,14 @@ export const ResultsPage: React.FC = () => {
 
   const handleOpenUser = (user: UserResult) => {
     setScroll(window.scrollY);
-    setUser(user);
+    setResult(user);
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 0);
   };
 
   const handleBackToList = () => {
-    setUser(null);
+    setResult(null);
     setTimeout(() => {
       window.scrollTo(0, scroll);
     }, 0);
@@ -99,7 +99,7 @@ export const ResultsPage: React.FC = () => {
           </div>
         )}
 
-        {!isAuth && !user && !loading && (
+        {!isAuth && !result && !loading && (
           <>
             <p className="results__message">
               {t(passwordInputTitle)}
@@ -123,21 +123,21 @@ export const ResultsPage: React.FC = () => {
           </>        
         )} 
 
-        {isAuth && !user && !loading && (
+        {isAuth && !result && !loading && (
           <ResultsList 
             usersResults={usersResults} 
             handleOpenUser={handleOpenUser} 
           />      
         )}
 
-        {user && !shema && (
+        {result && !shema && (
           <div className="results__user">
             <h1 className="results__user-name">
-              {t('result_for') + user.userName}
+              {t('result_for') + result.user}
             </h1>
 
             <ResultData 
-              userAnswers={user.userAnswers} 
+              userAnswers={result.userAnswers} 
               setShema={setShema}
             />
 

@@ -1,6 +1,6 @@
 export type UserResult = {
   id: number;
-  userName: string;
+  user: string;
   userAnswers: number[];
   createdAt: string;
 };
