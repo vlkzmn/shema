@@ -39,15 +39,15 @@ export const TestPage = () => {
   };
 
   return (
-    <div className="test">
-      <div className="test__container">
+    <div className="test-page">
+      <div className="test-page__container">
         {user && !testing && (
           <div>
-            <p className="test__message">
+            <p className="test-page__message">
               {t('saved_data')}<strong>{user}</strong>
             </p>
 
-            <div className="test__buttons">
+            <div className="test-page__buttons">
               <Button
                 type={ButtonTypes.button}
                 text="button_continue_test"
@@ -65,14 +65,14 @@ export const TestPage = () => {
 
         {!user && !testing && (
           <div>
-            <p className="test__message">
+            <p className="test-page__message">
               {t('input_name')}
             </p>
 
-            <form className="test__buttons" onSubmit={handleNameSubmit}>
+            <form className="test-page__buttons" onSubmit={handleNameSubmit}>
               <input 
                 type="text"
-                className="test__input"
+                className="test-page__input"
                 value={name}
                 placeholder={t('placeholder_name')}
                 onChange={handleNameChange}

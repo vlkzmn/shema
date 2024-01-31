@@ -9,7 +9,7 @@ import { apiService } from '../../services/apiService';
 import { Loader } from '../Loader/Loader';
 import { ResultData } from '../ResultData/ResultData';
 import { Button } from '../Button/Button';
-import './Result.scss';
+import './TestResult.scss';
 
 type Props = {
   userAnswers: number[];
@@ -26,7 +26,6 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
     event.preventDefault();
     
     setLoading(true);
-    // setMessage('');
 
     const user = localStorageService.getName() || 'Name Error';
     const lang = i18n.language.slice(0, 2);
@@ -39,8 +38,6 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
     };
 
     apiService.sendResult(userResult)
-    // axios.post('https://shema-api.onrender.com/result', userResult)
-    // axios.post('http://localhost:5000/result', userResult)
       .then(() => {
         localStorageService.removeUser();
         setEmail('');
@@ -65,34 +62,34 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
   }
 
   return (
-    <div className="result">
-      <h1 className="result__title">
+    <div className="test-result">
+      <h1 className="test-result__title">
         {t('test_result')}
       </h1>
 
       <ResultData userAnswers={userAnswers} />
 
-      <p className="result__text">
+      <p className="test-result__text">
         {t('result_page_text_1')}
       </p>
 
-      <p className="result__text">
+      <p className="test-result__text">
         {t('result_page_text_2')}
       </p>
 
-      <div className="result__confirm">
+      <div className="test-result__confirm">
         {!message && (
           <div>
             {loading ? (
               <Loader/>
             ) : (
               <form 
-                className="result__form" 
+                className="test-result__form" 
                 onSubmit={handleFinishTest}
               >
                 <input 
                   type="email"
-                  className="result__input"
+                  className="test-result__input"
                   value={email}
                   placeholder={t('placeholder_email')}
                   onChange={handleChangeEmail}
@@ -108,7 +105,7 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
         )}  
 
         {!!message && (
-          <p className="result__message">
+          <p className="test-result__message">
             {message}
           </p>
         )} 

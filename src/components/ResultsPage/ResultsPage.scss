@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 
-.results {
+.results-page {
   flex-grow: 1;
   padding: 40px 0;
 
@@ -14,12 +14,6 @@
     display: flex;
     justify-content: center;
   }
-
-  // &__title {    
-  //   margin-bottom: 30px;
-  //   font-size: 26px;
-  //   text-align: center;
-  // }
 
   &__message {
     margin-bottom: 40px;
@@ -46,19 +40,6 @@
     border-radius: 20px;
     outline: none;
   }
-
-  // &__table {
-  //   margin: 0 auto;    
-  //   border-collapse: collapse;
-  // }
-
-  // &__row {
-  //   cursor: pointer;
-  // }
-
-  // &__cell-start {
-  //   text-align: left;
-  // }
 
   &__user {
     display: flex;

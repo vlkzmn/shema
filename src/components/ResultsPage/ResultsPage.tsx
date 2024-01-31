@@ -21,11 +21,11 @@ export const ResultsPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [usersResults, setUsersResults] = useState<UserResult[]>([]);
   const [result, setResult] = useState<UserResult | null>(null);
-  const [shema, setShema] = useState(0);
-  const { t } = useTranslation();
+  const [shema, setShema] = useState(0);  
   const [loading, setLoading] = useState(true);
   const [scroll, setScroll] = useState(0);
   const [passwordInputTitle, setPasswordInputTitle] = useState('input_password');
+  const { t } = useTranslation();
 
   const fetchResults = useCallback(() => {
     apiService.getAllResults()
@@ -91,24 +91,24 @@ export const ResultsPage: React.FC = () => {
   };
 
   return (
-    <div className="results">
-      <div className="results__container">
+    <div className="results-page">
+      <div className="results-page__container">
         {loading && (
-          <div className="results__loader">
+          <div className="results-page__loader">
             <Loader/>
           </div>
         )}
 
         {!isAuth && !result && !loading && (
           <>
-            <p className="results__message">
+            <p className="results-page__message">
               {t(passwordInputTitle)}
             </p>
 
-            <form className="results__buttons" onSubmit={handleSubmit}>
+            <form className="results-page__buttons" onSubmit={handleSubmit}>
               <input 
                 type='password'
-                className="results__input"
+                className="results-page__input"
                 value={password}
                 onChange={handleChangePassword}
                 autoFocus
@@ -131,8 +131,8 @@ export const ResultsPage: React.FC = () => {
         )}
 
         {result && !shema && (
-          <div className="results__user">
-            <h1 className="results__user-name">
+          <div className="results-page__user">
+            <h1 className="results-page__user-name">
               {t('result_for') + result.user}
             </h1>
 

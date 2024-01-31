@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { ButtonTypes } from '../../types/ButtonTypes';
 import { DataContext } from '../../DataContext';
 import { localStorageService } from '../../services/localStorageService';
-import { TestResult } from '../Result/Result';
+import { TestResult } from '../TestResult/TestResult';
 import { Button } from '../Button/Button';
 import './Questions.scss';
 

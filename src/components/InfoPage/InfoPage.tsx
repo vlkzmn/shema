@@ -14,22 +14,22 @@ export const InfoPage = () => {
   const handleTogglePage = useCallback(() => togglePage(Pages.test), []);
 
   return (
-    <div className="info">
-      <div className="info__container">
-        <h1 className="info__title">
+    <div className="info-page">
+      <div className="info-page__container">
+        <h1 className="info-page__title">
           {t('title')}
         </h1>
 
-        <div className="info__content">
-          <p className="info__text">
+        <div className="info-page__content">
+          <p className="info-page__text">
             {t('description_1')}
           </p>
                   
-          <p className="info__text">
+          <p className="info-page__text">
             {t('description_2')}
           </p>
               
-          <p className="info__text">        
+          <p className="info-page__text">        
             {t('description_3')}
           </p>
         </div>  
