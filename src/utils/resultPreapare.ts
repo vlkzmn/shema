@@ -1,9 +1,9 @@
-import { Result } from "../types/Result";
+import { ResultData } from "../types/ResultData";
 
 const SHEMA_KEY = 'YSQ_S3_schema_';
 
 export function resultPreapare(userAnswers: number[]) {
-  let result: Result[] = [];
+  let result: ResultData[] = [];
   // const users: number[] = [];
 
   // for (let i = 0; i < 90; i++) {

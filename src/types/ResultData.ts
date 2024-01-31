@@ -1,4 +1,4 @@
-export type Result = {
+export type ResultData = {
   shema: string;
   answers: number[];
   sum: number;

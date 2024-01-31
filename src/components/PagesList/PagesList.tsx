@@ -6,7 +6,6 @@ import { Pages } from '../../types/Pages';
 import { DataContext } from '../../DataContext';
 import './PagesList.scss';
 
-
 export const PagesList = () => {
   const { isDarkTheme, page, togglePage } = useContext(DataContext);
   const menu = Object.values(Pages);

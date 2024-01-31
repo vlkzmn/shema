@@ -31,17 +31,17 @@ export const ResultData: React.FC<Props> = memo(({ userAnswers, setShema }) => {
             key={item.shema} 
             className={cn(
               'result-data__list-item',
-              {'result-data__list-item--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.result},
+              {'result-data__list-item--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.results},
             )}
           >
             <h2 className="result-data__shema">
-              {page === Pages.result ? (
+              {page === Pages.results ? (
                 <button
                   type='button'
                   className={cn(
                     'result-data__link', 
                     {'result-data__link--dark': isDarkTheme},
-                    {'result-data__link--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.result}
+                    {'result-data__link--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.results}
                   )}
                   onClick={() => handleOpenShema(i)}
                 >
@@ -93,17 +93,17 @@ export const ResultData: React.FC<Props> = memo(({ userAnswers, setShema }) => {
               key={item.shema} 
               className={cn(
                 'result-data__list-item',
-                {'result-data__list-item--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.result}
+                {'result-data__list-item--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.results}
               )
             }>
               <td className="result-data__cell-start">
-                {page === Pages.result ? (
+                {page === Pages.results ? (
                   <button
                     type='button'
                     className={cn(
                       'result-data__link', 
                       {'result-data__link--dark': isDarkTheme},
-                      {'result-data__link--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.result}
+                      {'result-data__link--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.results}
                     )}
                     onClick={() => handleOpenShema(i)}
                   >

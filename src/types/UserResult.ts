@@ -1,6 +1,6 @@
-export type UsersResults = {
+export type UserResult = {
   id: number;
-  user: string;
+  userName: string;
   userAnswers: number[];
   createdAt: string;
 };

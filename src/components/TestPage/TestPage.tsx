@@ -5,9 +5,9 @@ import { localStorageService } from '../../services/localStorageService';
 import { ButtonTypes } from '../../types/ButtonTypes';
 import { Questions } from '../Questions/Questions';
 import { Button } from '../Button/Button';
-import './Test.scss';
+import './TestPage.scss';
 
-export const Test = () => {
+export const TestPage = () => {
   const [name, setName] = useState('');
   const [user, setUser] = useState<string | null>(localStorageService.getName());
   const [testing, setTesting] = useState(false);

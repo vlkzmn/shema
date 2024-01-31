@@ -11,7 +11,7 @@ import { PagesList } from '../PagesList/PagesList';
 import './Header.scss';
 
 export const Header = () => {
-  const { isDarkTheme, toggleTheme, page, togglePage } = useContext(DataContext);
+  const { isDarkTheme, toggleTheme } = useContext(DataContext);
   const [isMobileMenu, setIsMobileMenu] = useState(false);
   const { t, i18n } = useTranslation();
   

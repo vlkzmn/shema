@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 import { httpClient } from "../http/httpClient";
 import { TestResult } from "../types/TestResult";
-import { UsersResults } from '../types/UsersResults'
+import { UserResult } from '../types/UserResult'
 
-function getAll(): Promise<UsersResults[]> {
+function getAllResults(): Promise<UserResult[]> {
   return httpClient.get("/result");
 }
 
@@ -15,4 +15,4 @@ function sendResult(data: TestResult): Promise<AxiosResponse> {
   return httpClient.post("/result", data);
 }
 
-export const apiService = { getAll, getShema, sendResult };
+export const apiService = { getAllResults, getShema, sendResult };

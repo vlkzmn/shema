@@ -1,50 +1,10 @@
 @import '../../styles/variables';
 
-.results {
-  flex-grow: 1;
-  padding: 40px 0;
-
-  &__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  &__loader {
-    display: flex;
-    justify-content: center;
-  }
-
+.results-list {
   &__title {    
     margin-bottom: 30px;
     font-size: 26px;
     text-align: center;
-  }
-
-  &__message {
-    margin-bottom: 40px;
-    padding-top: 20vh;
-    font-size: 22px;
-    text-align: center;
-  }
-
-  &__buttons {
-    width: 100%;
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  &__input {
-    width: 150px;
-    height: 36px;
-    padding: 0 20px;
-    font-size: 18px;
-    line-height: 36px;
-    border: 1px solid $grayColor;
-    border-radius: 20px;
-    outline: none;
   }
 
   &__table {
@@ -58,17 +18,5 @@
 
   &__cell-start {
     text-align: left;
-  }
-
-  &__user {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &__user-name {
-    margin-bottom: 20px;
-    font-size: 26px;
-    text-align: center;
   }
 }

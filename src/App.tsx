@@ -1,62 +1,35 @@
-import { Suspense, useContext } from 'react';
+import { useContext } from 'react';
 import classNames from 'classnames';
 
+import { Pages } from './types/Pages';
 import { DataContext } from './DataContext';
 import { Header } from './components/Header/Header';
+import { InfoPage } from './components/InfoPage/InfoPage';
+import { TestPage } from './components/TestPage/TestPage';
+import { ResultsPage } from './components/ResultsPage/ResultsPage';
 import './App.scss';
 
-import { Info } from './components/Info/Info';
-import { Test } from './components/TestPage/Test';
-import { Results } from './components/ResultsList/ResultsList';
-import { Loader } from './components/Loader/Loader';
-
 export const App = () => {
-  const { isDarkTheme, page} = useContext(DataContext);
+  const { isDarkTheme, page } = useContext(DataContext);
 
   const renderPage = () => {
     switch (page) {
-      case 'test':
-        return <Test />;
-      case 'result':
-        return <Results />;
+      case Pages.test:
+        return <TestPage />;
+      case Pages.results:
+        return <ResultsPage />;
       default:
-        return <Info />;
+        return <InfoPage />;
     }
   };
 
+  const currentPage = renderPage();
+
   return (
-    <Suspense fallback={<Loader />}>
-      <div className={classNames('app', { 'app--dark': isDarkTheme })}>
-        <Header />
-        
-        {renderPage()}
-      </div> 
-    </Suspense>     
+    <div className={classNames('app', { 'app--dark': isDarkTheme })}>
+      <Header />
+      
+      {currentPage}
+    </div> 
   );
 };
-
-// import { Suspense, useContext } from 'react';
-// import classNames from 'classnames';
-
-// import { DataContext, DataProvider } from './DataContext';
-// import { Loader } from './components/Loader/Loader';
-// import { Header } from './components/Header/Header';
-// import './App.scss';
-// import './i18n.js';
-
-
-// export const App = () => {
-//   const { isDarkTheme } = useContext(DataContext);
-//   console.log(isDarkTheme);
-
-//   return (
-//     <Suspense fallback={<Loader />}>
-//       <DataProvider>
-//         <div className={classNames('app', { 'app--dark': isDarkTheme })}>
-//           <Header />
-//           fggfhf
-//         </div>
-//       </DataProvider>      
-//     </Suspense>    
-//   );
-// }

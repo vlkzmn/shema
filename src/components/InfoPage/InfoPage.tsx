@@ -5,9 +5,9 @@ import { DataContext } from '../../DataContext';
 import { Pages } from '../../types/Pages';
 import { ButtonTypes } from '../../types/ButtonTypes';
 import { Button } from '../Button/Button';
-import './Info.scss';
+import './InfoPage.scss';
 
-export const Info = () => {
+export const InfoPage = () => {
   const { togglePage } = useContext(DataContext);
   const { t } = useTranslation();
 
