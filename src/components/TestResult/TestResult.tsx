@@ -26,7 +26,7 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
   const handleFinishTest = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!email || isEmailValid(email)) {
+    if (!email.trim() || isEmailValid(email)) {
       setLoading(true);
 
       const user = localStorageService.getName() || 'Name Error';
@@ -34,7 +34,7 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
       
       const userResult = {
         user,
-        email,
+        email: email.trim(),
         userAnswers,
         lang,
       };
@@ -47,21 +47,21 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
           setTimeout(() => {
             setMessage('');
             togglePage(Pages.info);
-          }, 5000);
+          }, 4000);
         })
         .catch((error) => {
           console.error(error);
           setMessage(t('test_error'));
           setTimeout(() => {
             setMessage('');
-          }, 5000);
+          }, 4000);
         })
         .finally(() => setLoading(false));  
     } else {
       setMessage(t('email_input_error'));
       setTimeout(() => {
         setMessage('');
-      }, 2000);
+      }, 4000);
 }
   };
 

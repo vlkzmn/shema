@@ -33,7 +33,7 @@
 
   "placeholder_name": "введіть ім'я",
   "placeholder_email": "введіть e-mail",
-  "email_input_error": "виправте помилку в адресі електронної пошти",
+  "email_input_error": "ви ввели некоректну адресу",
 
   "button_to_test": "Перейти до тесту",
   "button_start_new_test": "Розпочати новий",

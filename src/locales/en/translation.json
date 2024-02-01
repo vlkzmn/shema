@@ -33,7 +33,7 @@
 
   "placeholder_name": "enter your name",
   "placeholder_email": "enter your e-mail",
-  "email_input_error": "correct the error in the email address",
+  "email_input_error": "you entered an incorrect address",
 
   "button_to_test": "Go to the test",
   "button_start_new_test": "Start a new one",
