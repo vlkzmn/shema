@@ -47,6 +47,7 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
           setTimeout(() => {
             setMessage('');
             togglePage(Pages.info);
+            window.scrollTo(0, 0);
           }, 4000);
         })
         .catch((error) => {
