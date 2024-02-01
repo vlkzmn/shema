@@ -11,7 +11,7 @@
   border: none;
   background-color: $darkColor;
   cursor: pointer;
-  transition: color $smoothTime, background-color $smoothTime, outline ;
+  transition: color $smoothTime, background-color $smoothTime;
 
   &--dark {
     color: $darkColor;

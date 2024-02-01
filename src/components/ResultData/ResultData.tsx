@@ -26,12 +26,15 @@ export const ResultData: React.FC<Props> = memo(({ userAnswers, setShema }) => {
   return (
     <div className="result-data__content">
       <div className="result-data__list">
-        {result.map((item, i) => (
+        {result.map((item, i) => {
+          const isDanger = (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.results;
+
+          return (
           <div 
             key={item.shema} 
             className={cn(
               'result-data__list-item',
-              {'result-data__list-item--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.results},
+              { 'result-data__list-item--danger': isDanger },
             )}
           >
             <h2 className="result-data__shema">
@@ -41,7 +44,7 @@ export const ResultData: React.FC<Props> = memo(({ userAnswers, setShema }) => {
                   className={cn(
                     'result-data__link', 
                     {'result-data__link--dark': isDarkTheme},
-                    {'result-data__link--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.results}
+                    {'result-data__link--danger': isDanger}
                   )}
                   onClick={() => handleOpenShema(i)}
                 >
@@ -74,7 +77,7 @@ export const ResultData: React.FC<Props> = memo(({ userAnswers, setShema }) => {
               </li>
             </ul> 
           </div>          
-        ))}
+        )})}
       </div>       
 
       <table className="result-data__table">
@@ -88,12 +91,15 @@ export const ResultData: React.FC<Props> = memo(({ userAnswers, setShema }) => {
           </tr>
         </thead>
         <tbody>
-          {result.map((item, i) => (
+          {result.map((item, i) => {
+            const isDanger = (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.results;
+
+            return (
             <tr 
               key={item.shema} 
               className={cn(
                 'result-data__list-item',
-                {'result-data__list-item--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.results}
+                { 'result-data__list-item--danger': isDanger }
               )
             }>
               <td className="result-data__cell-start">
@@ -102,8 +108,8 @@ export const ResultData: React.FC<Props> = memo(({ userAnswers, setShema }) => {
                     type='button'
                     className={cn(
                       'result-data__link', 
-                      {'result-data__link--dark': isDarkTheme},
-                      {'result-data__link--danger': (item.percent > 50 || item.sumFiveSix > 10) && page === Pages.results}
+                      { 'result-data__link--dark': isDarkTheme },
+                      { 'result-data__link--danger': isDanger }
                     )}
                     onClick={() => handleOpenShema(i)}
                   >
@@ -118,7 +124,7 @@ export const ResultData: React.FC<Props> = memo(({ userAnswers, setShema }) => {
               <td>{item.percent}</td>
               <td>{item.sumFiveSix}</td>
             </tr>    
-          ))}
+          )})}
         </tbody>        
       </table>
     </div>

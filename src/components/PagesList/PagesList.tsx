@@ -2,8 +2,8 @@ import { useContext } from 'react';
 import cn from "classnames";
 import { useTranslation } from 'react-i18next';
 
-import { Pages } from '../../types/Pages';
 import { DataContext } from '../../DataContext';
+import { Pages } from '../../types/Pages';
 import './PagesList.scss';
 
 export const PagesList = () => {

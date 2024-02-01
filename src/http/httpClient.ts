@@ -23,7 +23,7 @@ function onResponseSuccess(res: AxiosResponse) {
 }
 
 async function onResponseError(error: any) {
-  const originalRequest = error.config; // в объекте error в свойтсве config хранится запрос который вернулся с ошибкой
+  const originalRequest = error.config;
 
   if (error.response.status !== 401) {
     throw error;
@@ -34,7 +34,7 @@ async function onResponseError(error: any) {
 
     localStorageService.setAccessToken(accessToken);
 
-    return httpClient.request(originalRequest); // отправляем запрос еще раз
+    return httpClient.request(originalRequest);
   } catch (error) {
     throw error;
   }
