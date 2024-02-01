@@ -1,6 +1,9 @@
+import { Pages } from "../types/Pages";
+
 const TEST_NAME_KEY = 'YSQ_S3';
 const USER_NAME_KEY = 'shemaUserName';
 const SHEMA_THEME = 'shemaTheme';
+const SHEMA_PAGE = 'shemaPage';
 const ACCESS_TOKEN = 'accessToken';
 
 function getAccessToken(): string | null {
@@ -9,6 +12,10 @@ function getAccessToken(): string | null {
 
 function getTheme(): string | null {
   return localStorage.getItem(SHEMA_THEME);
+}
+
+function getPage(): string | null {
+  return localStorage.getItem(SHEMA_PAGE);
 }
 
 function getName(): string | null {
@@ -35,6 +42,10 @@ function setTheme(theme: string) {
   localStorage.setItem(SHEMA_THEME, theme);
 }
 
+function setPage(page: Pages) {
+  localStorage.setItem(SHEMA_PAGE, page);
+}
+
 function setName(name: string) {
   localStorage.setItem(USER_NAME_KEY, name);
 }
@@ -51,10 +62,12 @@ function removeUser() {
 export const localStorageService = {
   getAccessToken,
   getTheme,
+  getPage,
   getName,
   getAnswers,
   setAccessToken,
   setTheme,
+  setPage,
   setName,
   setAnswers,
   removeUser,

@@ -10,6 +10,7 @@ import { Loader } from '../Loader/Loader';
 import { ResultData } from '../ResultData/ResultData';
 import { Button } from '../Button/Button';
 import './TestResult.scss';
+import { isEmailValid } from '../../utils/validator';
 
 type Props = {
   userAnswers: number[];
@@ -24,37 +25,44 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
 
   const handleFinishTest = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
-    setLoading(true);
 
-    const user = localStorageService.getName() || 'Name Error';
-    const lang = i18n.language.slice(0, 2);
-    
-    const userResult = {
-      user,
-      email,
-      userAnswers,
-      lang,
-    };
+    if (!email || isEmailValid(email)) {
+      setLoading(true);
 
-    apiService.sendResult(userResult)
-      .then(() => {
-        localStorageService.removeUser();
-        setEmail('');
-        setMessage(t('test_success'));
-        setTimeout(() => {
-          setMessage('');
-          togglePage(Pages.info);
-        }, 5000);
-      })
-      .catch((error) => {
-        console.error(error);
-        setMessage(t('test_error'));
-        setTimeout(() => {
-          setMessage('');
-        }, 5000);
-      })
-      .finally(() => setLoading(false));    
+      const user = localStorageService.getName() || 'Name Error';
+      const lang = i18n.language.slice(0, 2);
+      
+      const userResult = {
+        user,
+        email,
+        userAnswers,
+        lang,
+      };
+
+      apiService.sendResult(userResult)
+        .then(() => {
+          localStorageService.removeUser();
+          setEmail('');
+          setMessage(t('test_success'));
+          setTimeout(() => {
+            setMessage('');
+            togglePage(Pages.info);
+          }, 5000);
+        })
+        .catch((error) => {
+          console.error(error);
+          setMessage(t('test_error'));
+          setTimeout(() => {
+            setMessage('');
+          }, 5000);
+        })
+        .finally(() => setLoading(false));  
+    } else {
+      setMessage(t('email_input_error'));
+      setTimeout(() => {
+        setMessage('');
+      }, 2000);
+}
   };
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,7 +96,7 @@ export const TestResult: React.FC<Props> = ({ userAnswers }) => {
                 onSubmit={handleFinishTest}
               >
                 <input 
-                  type="email"
+                  type="text"
                   className="test-result__input"
                   value={email}
                   placeholder={t('placeholder_email')}

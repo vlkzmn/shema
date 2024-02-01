@@ -6,9 +6,11 @@ import { ButtonTypes } from '../../types/ButtonTypes';
 import { Questions } from '../Questions/Questions';
 import { Button } from '../Button/Button';
 import './TestPage.scss';
+import { isNameValid } from '../../utils/validator';
 
 export const TestPage = () => {
   const [name, setName] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [user, setUser] = useState<string | null>(localStorageService.getName());
   const [testing, setTesting] = useState(false);
   const { t } = useTranslation();
@@ -25,13 +27,15 @@ export const TestPage = () => {
   const handleNameSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   
-    if (name.trim()) {
+    if (isNameValid(name)) {
       setUser(name);
       localStorageService.setName(name);
       setTesting(true);
-    }     
-  
-    setName('');
+      setName('');
+      setErrorMessage('');
+    } else {
+      setErrorMessage('input_error_message');
+    }
   };
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,6 +88,12 @@ export const TestPage = () => {
                 text="button_submit"
               />
             </form>
+
+            {errorMessage && (
+              <p className="test-page__message test-page__message--error">
+                {t(errorMessage)}
+              </p>
+            )}            
           </div>
         )}       
 

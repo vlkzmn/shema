@@ -55,20 +55,29 @@ export const ResultsPage: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setLoading(true);
 
-    authService.login(password)
-      .then((data) => {
-        localStorageService.setAccessToken(data);  
-        fetchResults();
-        setIsAuth(true);
-        setPasswordInputTitle('input_password');
-      })
-      .catch(error => {
-        console.log(error);
-        setLoading(false);
-        setPasswordInputTitle('wrong_password');
-      });
+    if (password.trim() && password.length < 20) {
+      setLoading(true);
+
+      authService.login(password)
+        .then((data) => {
+          localStorageService.setAccessToken(data);  
+          fetchResults();
+          setIsAuth(true);
+          setPasswordInputTitle('input_password');
+        })
+        .catch(error => {
+          console.log(error);
+          setLoading(false);
+          setPasswordInputTitle('wrong_password');
+        })
+        .finally(() => {
+          setPassword('');
+        });
+    } else {
+      setPassword('');
+      setPasswordInputTitle('wrong_password');
+    }    
   };
 
   const handleOpenUser = (user: UserResult) => {

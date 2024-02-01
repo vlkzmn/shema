@@ -14,7 +14,11 @@
     padding-top: 20vh;
     margin-bottom: 40px;
     font-size: 22px;
-    text-align: center;    
+    text-align: center;  
+    
+    &--error {      
+      padding-top: 40px;
+    }
   }
 
   &__buttons {
