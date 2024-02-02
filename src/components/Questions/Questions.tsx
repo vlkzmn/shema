@@ -12,7 +12,7 @@ import './Questions.scss';
 
 const ANSWERS = ['1', '2', '3', '4', '5', '6'];
 const TEST_NAME = 'YSQ_S3';
-const TEST_LENGTH = 3;
+const TEST_LENGTH = 90;
 
 export const Questions = () => {
   const { isDarkTheme } = useContext(DataContext);
