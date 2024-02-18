@@ -28,6 +28,7 @@
   <li>PWA implemented on the page.</li>
   <li>Multilingual functionality has been implemented, with a choice between Ukrainian, English and Russian.</li>
   <li>Ability to choose between light and dark application themes.</li>
+  <li>The application remembers the user's chosen language and theme color.</li>
   <li>Saving the testing process for each question, if the device turns off, you can return to where you left off.</li>
   <li>During the test, you can return to previous questions.</li>
   <li>Demonstration of progress in completing the questionnaire.</li>
